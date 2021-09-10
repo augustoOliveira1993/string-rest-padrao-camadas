@@ -3,23 +3,21 @@ package com.devsuperior.aula.dto;
 import com.devsuperior.aula.entities.User;
 
 public class UserDTO {
-
 	private Long id;
 	private String name;
 	private String email;
 	
 	public UserDTO() {
+
 	}
 
 	public UserDTO(Long id, String name, String email) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 	}
 	
 	public UserDTO(User entity) {
-		super();
 		this.id = entity.getId();
 		this.name = entity.getName();
 		this.email = entity.getEmail();

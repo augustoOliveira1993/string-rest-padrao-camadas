@@ -20,26 +20,25 @@ public class UserService {
 	private UserRepository userRepository;
 	
 	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
+	private BCryptPasswordEncoder passwordEncode;
 	
 	public List<UserDTO> findAll() {
 		List<User> list = userRepository.findAll();
 		return list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
-	} 
+	}
 	
 	public UserDTO insert(UserInsertDTO dto) {
 		User user = userRepository.findByEmail(dto.getEmail());
-		if (user != null) {
-			throw new ServiceException("Email já existe");
+		if(user != null) {
+			throw new ServiceException("Email ja existe!");
 		}
 		
 		User obj = new User();
 		obj.setName(dto.getName());
 		obj.setEmail(dto.getEmail());
-		obj.setPassword(passwordEncoder.encode(dto.getPassword()));
+		obj.setPassword(passwordEncode.encode(dto.getPassword()));
 		
 		obj = userRepository.save(obj);
-		
 		return new UserDTO(obj);
 	}
 }

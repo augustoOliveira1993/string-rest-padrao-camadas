@@ -9,17 +9,16 @@ public class UserInsertDTO {
 	private String password;
 	
 	public UserInsertDTO() {
+
 	}
 
-	public UserInsertDTO(String name, String email, String password) {
-		super();
+	public UserInsertDTO(Long id, String name, String email, String password) {
 		this.name = name;
 		this.email = email;
 		this.password = password;
 	}
 	
 	public UserInsertDTO(User entity) {
-		super();
 		this.name = entity.getName();
 		this.email = entity.getEmail();
 		this.password = entity.getPassword();
